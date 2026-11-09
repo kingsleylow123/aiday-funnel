@@ -1,0 +1,18 @@
+.vercel
+.env*
+!.env.local.example
+node_modules/
+.next/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.DS_Store
+videos/
+
+# Private Hermes/CM HQ operational memory must never enter this repository.
+/Current Decisions.md
+/Event SOP Learnings.md
+/Huda Responsibilities.md
+/Kingsley Coaching Patterns.md
+/checkpoint.json
+/claudemalaysia-production-source/src/checkpoint.json

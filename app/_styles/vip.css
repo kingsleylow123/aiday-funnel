@@ -1,0 +1,173 @@
+/* Generated from the AI Day pack (brand.css + page <style>), scoped under .aid-vip.
+   Source of truth: AI-Day-Pack-Kingsley. Do not hand edit; regenerate. */
+/* Run It From Your Phone · shared brand system for the summit, VIP and thank you pages.
+   Display: Plus Jakarta Sans 800, tight. Accent phrase: same sans, in blue. Never italics (Rafay's rule). One electric blue, one marker yellow used sparingly.
+   Rule of thumb: open layouts, hairline rules, big photography, real logos, no emoji, few boxes. */
+.aid-vip{
+  --bg:#FFFFFF; --paper:#F6F7F9; --ink:#0E0F12; --ink2:#2A2D34; --muted:#5F6470; --line:#E3E5EA;
+  --accent:#2D5BFF; --accent-deep:#1F44D6; --hi:#FFE14D; --ok:#12A150; --wa:#25D366;
+  --night:#0C0D10; --night2:#15171C; --night3:#1E2128; --onnight:#F3F4F6; --onnight2:#9AA0AC; --nightline:#262A33;
+  --gap-bg:#FFF2B3; --gap-ink:#6B4E00;
+  --sans:var(--font-pjs),"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --serif:var(--sans);
+  color-scheme:light;
+}
+.aid-vip,.aid-vip *{box-sizing:border-box}
+.aid-vip [hidden]{display:none!important}
+html:has(.aid-vip){scroll-behavior:smooth}
+.aid-vip{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+.aid-vip h1,.aid-vip h2,.aid-vip h3,.aid-vip p{margin:0}
+.aid-vip h1,.aid-vip h2,.aid-vip h3{text-wrap:balance;letter-spacing:-.045em;font-weight:800}
+.aid-vip img{display:block;max-width:100%}
+.aid-vip .in{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.aid-vip .band{padding-block:112px}
+.aid-vip .pap{background:var(--paper)}
+.aid-vip .night{background:var(--night);color:var(--onnight)}
+
+/* type */
+.aid-vip .kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.aid-vip .night .kicker{color:#7C97FF}
+.aid-vip .serif{font-family:inherit;font-weight:inherit;font-style:normal;letter-spacing:inherit}
+.aid-vip em,.aid-vip i,.aid-vip q,.aid-vip cite,.aid-vip blockquote,.aid-vip address{font-style:normal}
+.aid-vip .d1{font-size:clamp(46px,7.4vw,96px);line-height:.98}
+.aid-vip .d2{font-size:clamp(36px,5.4vw,68px);line-height:1.02}
+.aid-vip .d3{font-size:clamp(26px,3.2vw,38px);line-height:1.1}
+.aid-vip .d1 .serif,.aid-vip .d2 .serif,.aid-vip .d3 .serif{color:var(--accent)}
+.aid-vip .night .d2 .serif{color:#8FA6FF}
+.aid-vip .lede{font-size:clamp(18px,1.9vw,21px);color:var(--muted);font-weight:500;line-height:1.5;max-width:640px}
+.aid-vip .night .lede{color:var(--onnight2)}
+.aid-vip .mark{background:linear-gradient(transparent 58%,var(--hi) 58%,var(--hi) 92%,transparent 92%);padding-inline:2px}
+.aid-vip .gap{background:var(--gap-bg);color:var(--gap-ink);border-radius:4px;padding:0 4px;font-weight:700;font-family:var(--sans);font-style:normal}
+
+/* buttons */
+.aid-vip .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:#fff;border:0;border-radius:14px;padding:17px 26px;font:700 17px/1 var(--sans);letter-spacing:-.01em;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .15s,transform .15s}
+.aid-vip .btn:hover{background:var(--accent)}
+.aid-vip .btn:active{transform:translateY(1px)}
+.aid-vip .btn .ar{transition:transform .15s}
+.aid-vip .btn:hover .ar{transform:translateX(3px)}
+.aid-vip .btn.blue{background:var(--accent)}
+.aid-vip .btn.blue:hover{background:var(--accent-deep)}
+.aid-vip .btn.light{background:#fff;color:var(--ink)}
+.aid-vip .btn.light:hover{background:var(--hi)}
+.aid-vip .btn.line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.aid-vip .btn.line:hover{background:var(--ink);color:#fff}
+.aid-vip .btn[disabled]{opacity:.55;cursor:default}
+.aid-vip a:focus-visible,.aid-vip button:focus-visible,.aid-vip input:focus-visible,.aid-vip textarea:focus-visible,.aid-vip summary:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 50%,transparent);outline-offset:3px}
+
+/* bar */
+.aid-vip .topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(180%) blur(18px);-webkit-backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
+.aid-vip::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.aid-vip .topbar .in{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.aid-vip .wordmark{font-weight:800;font-size:18px;letter-spacing:-.04em;display:flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
+.aid-vip .wordmark i{width:10px;height:10px;border-radius:3px;background:var(--accent);display:inline-block;transform:rotate(45deg)}
+.aid-vip .topbar .meta{font-size:13px;font-weight:600;color:var(--muted)}
+.aid-vip .topbar .btn{padding:11px 16px;font-size:14px;border-radius:12px}
+
+/* photos */
+.aid-vip .photo{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:18px;overflow:hidden;background:var(--paper)}
+.aid-vip .photo img{width:100%;height:100%;object-fit:cover}
+
+/* logos marquee */
+.aid-vip .marq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.aid-vip .marq .track{display:flex;gap:64px;align-items:center;width:max-content;animation:marq 38s linear infinite}
+.aid-vip .marq img{height:26px;width:auto;opacity:.55;filter:grayscale(1) brightness(.2)}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.aid-vip .marq .track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}html:has(.aid-vip){scroll-behavior:auto}}
+
+/* steps (VIP and thank you): numbered circles joined by a progress line */
+.aid-vip .flow{background:var(--paper);border-bottom:1px solid var(--line)}
+.aid-vip .flow ol{list-style:none;margin:0 auto;padding:18px 0 16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:680px}
+.aid-vip .flow li{position:relative;display:grid;justify-items:center;gap:8px;text-align:center;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.aid-vip .flow li::before{content:"";position:absolute;top:17px;left:calc(-50% + 24px);right:calc(50% + 24px);height:3px;border-radius:3px;background:var(--line)}
+.aid-vip .flow li:first-child::before{display:none}
+.aid-vip .flow li.done::before,.aid-vip .flow li.now::before{background:var(--ok)}
+.aid-vip .flow li i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--line);font-size:15px;font-weight:800;color:var(--muted);letter-spacing:0}
+.aid-vip .flow li.done{color:var(--ok)}
+.aid-vip .flow li.done i{background:var(--ok);border-color:var(--ok);color:#fff}
+.aid-vip .flow li.now{color:var(--ink)}
+.aid-vip .flow li.now i{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 18%,transparent)}
+@media (max-width:420px){.aid-vip .flow li{font-size:11px;letter-spacing:.03em}}
+
+.aid-vip footer.foot{padding-block:32px;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}
+.aid-vip footer.foot .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.aid-vip .night + footer.foot,.aid-vip footer.foot.dark{background:var(--night);color:var(--onnight2);border-color:var(--nightline)}
+
+@media (max-width:900px){.aid-vip .band{padding-block:80px}}
+@media (max-width:600px){.aid-vip .topbar .meta{display:none}.aid-vip .band{padding-block:64px}}
+
+
+/* VIP offer, step 2 of 3. Outcome headline and the add-to-order button on the first screen; the ticket, what VIP unlocks, and a second buy box below. */
+.aid-vip .stage{background:radial-gradient(90% 70% at 70% 10%,#1A2B66 0%,var(--night) 60%);color:var(--onnight);padding-block:64px 96px;overflow:hidden}
+.aid-vip .stage .in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+.aid-vip .stage .kicker{color:var(--hi)}
+.aid-vip .stage h1{margin-block:16px 18px;font-size:clamp(44px,5.4vw,72px)}
+.aid-vip .stage h1 .serif{color:var(--hi)}
+.aid-vip .stage .lede{color:var(--onnight2)}
+.aid-vip .order{margin-top:28px;display:grid;gap:12px;max-width:460px}
+.aid-vip .order .op{display:flex;align-items:baseline;gap:12px}
+.aid-vip .order .op b{font-size:40px;font-weight:800;letter-spacing:-.05em;color:#fff;line-height:1}
+.aid-vip .order .op span{font-size:14px;color:var(--onnight2);font-weight:600}
+.aid-vip .order .btn{width:100%;padding-block:19px;font-size:18px}
+.aid-vip .order .no{color:var(--onnight2);text-align:center}
+.aid-vip .faces{display:flex;align-items:center;gap:14px;margin-top:28px}
+.aid-vip .faces div{display:flex}
+.aid-vip .faces img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid var(--night);margin-left:-10px}
+.aid-vip .faces img:first-child{margin-left:0}
+.aid-vip .faces span{font-size:14px;color:var(--onnight2);font-weight:500}
+
+/* the ticket */
+.aid-vip .ticket{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 120px;background:#fff;color:var(--ink);border-radius:22px;box-shadow:0 50px 100px -30px rgba(0,0,0,.7);transform:rotate(-2.5deg)}
+.aid-vip .ticket .main{padding:28px 28px 26px;display:grid;gap:18px;border-right:2px dashed var(--line)}
+.aid-vip .ticket .stub{padding:20px 12px;display:grid;place-items:center;text-align:center;gap:8px;background:var(--hi);border-radius:0 22px 22px 0}
+.aid-vip .ticket .stub b{writing-mode:vertical-rl;transform:rotate(180deg);font-size:26px;font-weight:800;letter-spacing:.08em}
+.aid-vip .ticket .stub span{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.aid-vip .ticket::before,.aid-vip .ticket::after{content:"";position:absolute;right:111px;width:22px;height:22px;border-radius:50%;background:var(--night)}
+.aid-vip .ticket::before{top:-11px}.aid-vip .ticket::after{bottom:-11px}
+.aid-vip .ticket .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.aid-vip .ticket .top b{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.aid-vip .ticket .top span{font-size:13px;font-weight:600;color:var(--muted)}
+.aid-vip .ticket h2{font-size:clamp(34px,4vw,48px);line-height:.98}
+.aid-vip .ticket h2 .serif{color:var(--accent)}
+.aid-vip .ticket .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;border-top:1px solid var(--line);padding-top:14px}
+.aid-vip .ticket .grid small{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.aid-vip .ticket .grid b{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.aid-vip .ticket .was{font-size:13px;color:var(--muted)}
+.aid-vip .ticket .was s{color:var(--muted)}
+
+/* unlocks */
+.aid-vip .unlock .in{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:start}
+.aid-vip .ul{border-top:1.5px solid var(--ink);margin-top:36px}
+.aid-vip .u{display:grid;grid-template-columns:64px minmax(0,1fr);gap:20px;padding-block:24px;border-bottom:1px solid var(--line)}
+.aid-vip .u .n{font-size:40px;font-weight:800;letter-spacing:-.06em;line-height:1;color:var(--accent)}
+.aid-vip .u b{display:block;font-size:22px;font-weight:800;letter-spacing:-.035em;line-height:1.2}
+.aid-vip .u p{color:var(--muted);margin-top:6px}
+.aid-vip .u .vs{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--paper);border-radius:6px;padding:4px 8px;color:var(--ink2)}
+.aid-vip .buy{position:sticky;top:84px;border:1.5px solid var(--ink);border-radius:22px;padding:28px;display:grid;gap:16px;margin-top:36px}
+.aid-vip .buy .kicker{color:var(--muted)}
+.aid-vip .price{font-size:84px;font-weight:800;letter-spacing:-.07em;line-height:.9}
+.aid-vip .price small{font-size:18px;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:8px}
+.aid-vip .buy .btn{width:100%;padding-block:20px;font-size:18px}
+.aid-vip .no{text-align:center;font-size:15px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.aid-vip .safe{font-size:13px;color:var(--muted);text-align:center}
+.aid-vip .qa{display:grid;gap:18px;border-top:1px solid var(--line);padding-top:18px}
+.aid-vip .qa b{font-size:16px;font-weight:800;letter-spacing:-.02em;display:block}
+.aid-vip .qa p{font-size:15px;color:var(--muted);margin-top:2px}
+
+@media (max-width:960px){
+  .aid-vip .stage .in,.aid-vip .unlock .in{grid-template-columns:minmax(0,1fr);gap:40px}
+  .aid-vip .ticket{transform:rotate(-1.5deg)}
+  .aid-vip .buy{position:static}
+  .aid-vip .stage{padding-block:32px 72px}
+}
+@media (max-width:560px){
+  .aid-vip .ticket{grid-template-columns:minmax(0,1fr) 72px}
+  .aid-vip .ticket::before,.aid-vip .ticket::after{right:63px}
+  .aid-vip .ticket .stub b{font-size:18px}
+  .aid-vip .ticket .main{padding:22px 18px}
+  .aid-vip .ticket .grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .aid-vip .price{font-size:68px}
+}
+
+/* Port wrapper: the pack styled <body>; here the page root plays that role. */
+.aid-vip{min-height:100vh;min-height:100svh}
+html:has(.aid-vip),body:has(.aid-vip){background:#FFFFFF}
