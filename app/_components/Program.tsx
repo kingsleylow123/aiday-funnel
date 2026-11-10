@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { anonId, captureAttribution, getAttribution, track } from "@/lib/aiday/client";
 import { PROGRAM, usd } from "@/lib/aiday/program";
+import { pixelOnce } from "@/lib/aiday/pixel";
 
 /*
  * AI Day Program checkout (client side). All payments live in EventOps:
@@ -11,12 +12,6 @@ import { PROGRAM, usd } from "@/lib/aiday/program";
  */
 
 const ERR = "That didn't go through. Check your connection and try again.";
-
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-  }
-}
 
 /** Meta Pixel InitiateCheckout. The pixel itself is loaded in app/layout.tsx; this only fires an event if it's there. */
 function pixelCheckout(value: number) {
@@ -123,6 +118,14 @@ function stillSettling(b: Buyer, justPaidDeposit: boolean, justPaidBalance: bool
   return false;
 }
 
+/** Meta Purchase, once per payment, only when Stripe has just sent the buyer back. */
+function pixelPaid(token: string, b: Buyer, justPaidDeposit: boolean, justPaidBalance: boolean) {
+  const c = PROGRAM.currency;
+  if (justPaidDeposit && b.deposit_paid) pixelOnce(`${token}_deposit`, "Purchase", { value: PROGRAM.depositUsd, currency: c, content_name: "AI Day Program deposit" });
+  if (justPaidBalance && b.plan === "full" && b.balance_paid) pixelOnce(`${token}_full`, "Purchase", { value: PROGRAM.balanceUsd, currency: c, content_name: "AI Day Program balance" });
+  if (justPaidBalance && b.plan === "split" && (Number(b.plan_payments_made) || 0) >= 1) pixelOnce(`${token}_split1`, "Purchase", { value: PROGRAM.splitUsd, currency: c, content_name: "AI Day Program instalment 1" });
+}
+
 /** /aiday/join/balance: reads the buyer's state and shows the right step. */
 export function BalanceFlow({ token, session, paid }: { token: string; session: string; paid: boolean }) {
   const [state, setState] = useState<State>(token ? { kind: "loading" } : { kind: "none" });
@@ -157,6 +160,7 @@ export function BalanceFlow({ token, session, paid }: { token: string; session: 
           continue;
         }
         setSettling(waiting);
+        if (!waiting) pixelPaid(token, b, !!session, paid);
         setState(b.deposit_paid ? { kind: "ok", buyer: b } : { kind: "none" });
         return;
       } catch {

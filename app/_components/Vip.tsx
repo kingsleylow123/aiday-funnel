@@ -2,12 +2,15 @@
 
 import { MouseEvent, useEffect, useState } from "react";
 import { captureAttribution, track } from "@/lib/aiday/client";
+import { pixelOnce } from "@/lib/aiday/pixel";
 
 /** vip_view once per page load. */
 export function VipView({ token }: { token: string }) {
   useEffect(() => {
     captureAttribution();
     track("vip_view", { token });
+    // /vip with a token is only reached after a successful sign up.
+    if (token) pixelOnce(token, "CompleteRegistration", { content_name: "AI Day" });
   }, [token]);
   return null;
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
+import { AIDAY_PIXEL_ID, SITE_PIXEL_ID } from "@/lib/aiday/pixel";
 
 /*
  * Run It From Your Phone (free AI day, 15 Nov 2026). Served at
@@ -19,8 +20,6 @@ const jakarta = Plus_Jakarta_Sans({
   adjustFontFallback: false,
 });
 
-// Same Meta Pixel as claudemalaysia.com, so AI Day ad traffic keeps tracking.
-const FB_PIXEL_ID = "3618851711751697";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.claudemalaysia.com"),
@@ -41,7 +40,8 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${FB_PIXEL_ID}');
+fbq('init', '${SITE_PIXEL_ID}');
+fbq('init', '${AIDAY_PIXEL_ID}');
 fbq('track', 'PageView');`}
         </Script>
       </body>

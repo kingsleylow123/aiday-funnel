@@ -1,14 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AIDAY_EVENT, AIDAY_START_MS } from "@/lib/aiday/config";
+import { AIDAY_EVENT, AIDAY_START_MS, AIDAY_VIP_PRICE_RM } from "@/lib/aiday/config";
 import { anonId, captureAttribution, getAttribution, track, type AidayEvent } from "@/lib/aiday/client";
+import { pixelOnce } from "@/lib/aiday/pixel";
 
-export function TyView({ token }: { token: string }) {
+export function TyView({ token, vipPaid = false }: { token: string; vipPaid?: boolean }) {
   useEffect(() => {
     captureAttribution();
     track("page_view", { token, props: { page: "thank_you" } });
-  }, [token]);
+    // EventOps adds vip=1 to Stripe's success link for the RM 47 VIP seat.
+    if (vipPaid && token) pixelOnce(token, "Purchase", { value: AIDAY_VIP_PRICE_RM, currency: "MYR", content_name: "AI Day VIP" });
+  }, [token, vipPaid]);
   return null;
 }
 
