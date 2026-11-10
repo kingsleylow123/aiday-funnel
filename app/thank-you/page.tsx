@@ -31,8 +31,8 @@ export default async function AidayThankYouPage({ searchParams }: Props) {
       <section className="cele"><Confetti /><div className="in">
         <p className="kicker">Congratulations<span id="nm">{name ? `, ${name}` : ""}</span></p>
         <h1 className="d1">You're in. <span className="serif">Sunday changes everything.</span></h1>
-        <p className="lede">In three hours you'll find your level, build your first AI helper, and watch a business run from a phone. Here's everything you need.</p>
-        <div className="when"><span>Sun 15 November</span><span>10am to 2:15pm MYT</span><span>Live on Zoom</span></div>
+        <p className="lede">In four hours you'll find your level, build your first AI helper, and watch a business run from a phone. Here's everything you need.</p>
+        <div className="when"><span>Sun 15 November</span><span>10am to 2:10pm MYT</span><span>Live on Zoom</span></div>
         <p className="cdl">Starts in <StartsIn /></p>
         <div className="acts" aria-label="Do these three things now">
           <div className="act"><div><small>Step 1</small><b>Add it to your calendar</b><p>So Sunday morning stays free.</p></div><TrackedLink className="btn line" id="cal" href={AIDAY_CALENDAR_URL} target="_blank" rel="noopener" event="calendar_click" token={token}>Add to calendar</TrackedLink></div>

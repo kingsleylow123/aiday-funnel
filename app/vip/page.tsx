@@ -56,8 +56,8 @@ export default async function AidayVipPage({ searchParams }: Props) {
           <p className="kicker">What the VIP pass unlocks</p>
           <h2 className="d2" style={{ marginTop: "14px" }}>Four things the free seat <span className="serif">doesn't get.</span></h2>
           <div className="ul">
-            <div className="u"><span className="n">01</span><div><b>The full replay, yours to keep</b><p>All three hours. Go back to any hour whenever you're ready for your next level.</p><span className="vs">Free seat: gone after 48 hours</span></div></div>
-            <div className="u"><span className="n">02</span><div><b>The VIP hot seat, 30 minutes live</b><p>When the day ends, all three of us stay on. Selected VIPs bring a real problem from their business and we work through it live.</p><span className="vs">VIP only</span></div></div>
+            <div className="u"><span className="n">01</span><div><b>The full replay, yours to keep</b><p>All four hours. Go back to any hour whenever you're ready for your next level.</p><span className="vs">Free seat: gone after 48 hours</span></div></div>
+            <div className="u"><span className="n">02</span><div><b>The VIP hot seat, one full hour live</b><p>When the day ends, all three of us stay on for a full hour, just for VIPs. Selected VIPs bring a real problem from their business and we work through it live, while every VIP watches. You leave knowing the first job in your business to hand to AI, the prompt or helper that does it, and your next step for Monday.</p><span className="vs">VIP only</span></div></div>
             <div className="u"><span className="n">03</span><div><b>The Power CEO workbook and level test</b><p>Check your level, follow the steps, and test again after you build.</p><span className="vs">VIP only</span></div></div>
             <div className="u"><span className="n">04</span><div><b>The prompt pack</b><p>Every prompt we use on the day, ready to paste into your own AI.</p><span className="vs">VIP only</span></div></div>
           </div>
