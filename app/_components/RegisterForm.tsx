@@ -75,6 +75,12 @@ export function RegisterForm({ variant }: { variant: "top" | "bottom" }) {
       }
       const token = typeof data.token === "string" ? data.token : "";
       track("register_success", { token, props: { form: variant } });
+      // Meta Pixel sign up event, so AI Day ads can optimise for registrations.
+      try {
+        (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq?.("track", "Lead", { content_name: "AI Day 15 Nov" });
+      } catch {
+        /* pixel blocked */
+      }
       const q = new URLSearchParams({ name: fn.slice(0, 40) });
       if (token) q.set("t", token);
       location.href = `/aiday/vip?${q.toString()}`;
