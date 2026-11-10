@@ -40,13 +40,14 @@ export default async function AidayInternalPage({ searchParams }: Props) {
     <div className="aid-dash">
       <section className="login" id="login">
         <form id="lf" method="post" action="/aiday/api/login">
+          <span className="brand"><img src="/aiday/brand/mark/mark.svg" alt="" width={28} height={28} />Claude Malaysia</span>
           <p className="kicker">Internal · partners only</p>
           <h1>Run It From Your Phone</h1>
           <label className="sr" htmlFor="lu">Username</label>
           <input id="lu" name="username" type="text" placeholder="Username (alaric, kingsley or rafay)" autoComplete="username" required />
           <label className="sr" htmlFor="lp">Password</label>
           <input id="lp" name="password" type="password" placeholder="Password" autoComplete="current-password" required />
-          <button className="btn blue" type="submit">Sign in <span className="ar">→</span></button>
+          <button className="btn" type="submit">Sign in <span className="ar">→</span></button>
           {err ? <p className="lerr" role="alert">{err}</p> : null}
           <small>Your own partner login. Don&apos;t share it.</small>
         </form>

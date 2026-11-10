@@ -124,9 +124,9 @@ export function Dashboard({ who }: { who: string }) {
       $("pace").innerHTML = "<div><small>New today</small><b>" + f(lastDay) + "</b></div><div><small>Still to go</small><b>" + f(need) + "</b></div><div><small>Needed per day</small><b>" + f(left > 0 ? Math.ceil(need / Math.max(1, left)) : need) + "</b></div>";
 
       const S = D.sources.slice().sort((a, b) => b.registered - a.registered), mx = Math.max(1, ...S.map((s) => s.registered));
-      $("src").innerHTML = '<tr><th>Source</th><th class="n">Visitors</th><th>Registered</th><th class="n">Rate</th><th class="n">VIP</th><th class="n">VIP rate</th></tr>' + S.map((s) => "<tr><td>" + esc(s.source) + '</td><td class="n">' + f(s.visitors) + '</td><td><span class="mini" style="width:' + Math.round((s.registered / mx) * 120) + 'px"></span>' + f(s.registered) + '</td><td class="n">' + pc(s.registered, s.visitors) + '</td><td class="n">' + f(s.vip) + '</td><td class="n">' + pc(s.vip, s.registered) + "</td></tr>").join("");
+      $("src").innerHTML = '<tr><th>Source</th><th class="n">Visitors</th><th>Registered</th><th class="n">Rate</th><th class="n">VIP</th><th class="n">VIP rate</th></tr>' + S.map((s) => "<tr><td>" + esc(s.source) + '</td><td class="n">' + f(s.visitors) + '</td><td class="m"><span class="mini" style="width:' + Math.round((s.registered / mx) * 120) + 'px"></span>' + f(s.registered) + '</td><td class="n">' + pc(s.registered, s.visitors) + '</td><td class="n">' + f(s.vip) + '</td><td class="n">' + pc(s.vip, s.registered) + "</td></tr>").join("");
 
-      $("em").innerHTML = '<tr><th>#</th><th>Email</th><th class="n">Sent</th><th class="n">Open</th><th class="n">Click</th></tr>' + D.emails.map((e) => "<tr><td>" + esc(e.n) + "</td><td>" + esc(e.name) + '</td><td class="n">' + f(e.sent) + '</td><td class="n">' + pc(e.opened, e.sent) + '</td><td class="n">' + pc(e.clicked, e.sent) + "</td></tr>").join("");
+      $("em").innerHTML = '<tr><th>#</th><th>Email</th><th class="n">Sent</th><th class="n">Open</th><th class="n">Click</th></tr>' + D.emails.map((e) => '<tr><td class="m">' + esc(e.n) + "</td><td>" + esc(e.name) + '</td><td class="n">' + f(e.sent) + '</td><td class="n">' + pc(e.opened, e.sent) + '</td><td class="n">' + pc(e.clicked, e.sent) + "</td></tr>").join("");
 
       const N = ["Watcher", "Asker", "Amplifier", "Builder", "Power CEO"], lm = Math.max(1, ...D.levels);
       $("lv").innerHTML = D.levels.map((v, i) => '<div title="Level ' + (i + 1) + " " + N[i] + ": " + f(v) + '"><b>' + f(v) + '</b><i style="height:' + Math.max(2, (v / lm) * 100) + 'px"></i><small>' + (i + 1) + " " + N[i] + "</small></div>").join("");
@@ -136,7 +136,7 @@ export function Dashboard({ who }: { who: string }) {
       const ft = D.forms.top + D.forms.bottom;
       $("forms").textContent = "Sign ups by form: top " + f(D.forms.top) + " (" + pc(D.forms.top, ft) + "), bottom " + f(D.forms.bottom) + " (" + pc(D.forms.bottom, ft) + ").";
 
-      $("calls").innerHTML = "<tr><th>Name</th><th>WhatsApp</th><th class=\"n\">Level</th><th>Revenue</th><th>Answer</th></tr>" + D.call_list.map((c) => "<tr><td>" + esc(c.first_name) + "</td><td>" + esc(c.whatsapp) + '</td><td class="n">' + esc(c.level) + "</td><td>" + esc(c.revenue) + "</td><td>" + esc(c.help) + "</td></tr>").join("");
+      $("calls").innerHTML = "<tr><th>Name</th><th>WhatsApp</th><th class=\"n\">Level</th><th>Revenue</th><th>Answer</th></tr>" + D.call_list.map((c) => "<tr><td>" + esc(c.first_name) + '</td><td class="m">' + esc(c.whatsapp) + '</td><td class="n">' + esc(c.level) + "</td><td>" + esc(c.revenue) + "</td><td>" + esc(c.help) + "</td></tr>").join("");
 
       const aff = $("affCard");
       if (D.affiliates && D.affiliates.length) {
@@ -158,14 +158,14 @@ export function Dashboard({ who }: { who: string }) {
       let cum = 0;
       const pts = D.daily.map((d) => { cum += num(d.registered); return { t: new Date(d.date + "T23:59:00+08:00").getTime(), v: cum, day: num(d.registered), date: d.date }; });
       let g = "";
-      [0, 0.25, 0.5, 0.75, 1].map((q) => Math.round(q * D.goal)).forEach((v) => { g += '<line x1="' + P.l + '" x2="' + (W - P.r) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="#E3E5EA" stroke-width="1"/><text x="' + (P.l - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="11" fill="#5F6470">' + (v ? v.toLocaleString() : "0") + "</text>"; });
-      days.forEach((ms) => { const dt = new Date(ms); g += '<text x="' + x(ms) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="11" fill="#5F6470">' + dt.toLocaleDateString("en-MY", { day: "numeric", month: "short", timeZone: "Asia/Kuala_Lumpur" }) + "</text>"; });
-      const pace = '<line x1="' + x(d0) + '" y1="' + y(0) + '" x2="' + x(d1) + '" y2="' + y(D.goal) + '" stroke="#8A90A0" stroke-width="2" stroke-dasharray="5 5"/>';
+      [0, 0.25, 0.5, 0.75, 1].map((q) => Math.round(q * D.goal)).forEach((v) => { g += '<line x1="' + P.l + '" x2="' + (W - P.r) + '" y1="' + y(v) + '" y2="' + y(v) + '" stroke="#E9E6E2" stroke-width="1"/><text x="' + (P.l - 8) + '" y="' + (y(v) + 4) + '" text-anchor="end" font-size="11" fill="#5F564B">' + (v ? v.toLocaleString() : "0") + "</text>"; });
+      days.forEach((ms) => { const dt = new Date(ms); g += '<text x="' + x(ms) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="11" fill="#5F564B">' + dt.toLocaleDateString("en-MY", { day: "numeric", month: "short", timeZone: "Asia/Kuala_Lumpur" }) + "</text>"; });
+      const pace = '<line x1="' + x(d0) + '" y1="' + y(0) + '" x2="' + x(d1) + '" y2="' + y(D.goal) + '" stroke="#978C7B" stroke-width="2" stroke-dasharray="5 5"/>';
       const path = "M" + x(d0) + " " + y(0) + pts.map((p) => " L" + x(p.t) + " " + y(p.v)).join("");
       const last = pts[pts.length - 1];
-      const dots = pts.map((p) => '<circle cx="' + x(p.t) + '" cy="' + y(p.v) + '" r="4" fill="#2D5BFF" stroke="#fff" stroke-width="2"/>').join("");
-      const lbl = last ? '<text x="' + (x(last.t) + 8) + '" y="' + (y(last.v) - 8) + '" font-size="12" font-weight="700" fill="#0E0F12">' + last.v.toLocaleString() + "</text>" : "";
-      const svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Total registered by day against the pace to ' + D.goal.toLocaleString() + '">' + g + pace + '<path d="' + path + '" fill="none" stroke="#2D5BFF" stroke-width="2" stroke-linejoin="round"/>' + dots + lbl + '<line id="xh" y1="' + P.t + '" y2="' + (H - P.b) + '" stroke="#0E0F12" stroke-width="1" opacity="0"/><rect x="' + P.l + '" y="' + P.t + '" width="' + (W - P.l - P.r) + '" height="' + (H - P.t - P.b) + '" fill="transparent" id="hit"/></svg>';
+      const dots = pts.map((p) => '<circle cx="' + x(p.t) + '" cy="' + y(p.v) + '" r="4" fill="#D97757" stroke="#FFFDF9" stroke-width="2"/>').join("");
+      const lbl = last ? '<text x="' + (x(last.t) + 8) + '" y="' + (y(last.v) - 8) + '" font-size="12" font-weight="500" fill="#211C16">' + last.v.toLocaleString() + "</text>" : "";
+      const svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Total registered by day against the pace to ' + D.goal.toLocaleString() + '">' + g + pace + '<path d="' + path + '" fill="none" stroke="#D97757" stroke-width="2" stroke-linejoin="round"/>' + dots + lbl + '<line id="xh" y1="' + P.t + '" y2="' + (H - P.b) + '" stroke="#211C16" stroke-width="1" opacity="0"/><rect x="' + P.l + '" y="' + P.t + '" width="' + (W - P.l - P.r) + '" height="' + (H - P.t - P.b) + '" fill="transparent" id="hit"/></svg>';
       const tip = $("tip");
       box.innerHTML = svg;
       box.appendChild(tip);
@@ -192,9 +192,12 @@ export function Dashboard({ who }: { who: string }) {
   return (
     <div id="app">
       <header className="topbar"><div className="in">
-        <span className="wordmark"><i></i>Run It From Your Phone</span>
+        <div className="lockup">
+          <span className="brand"><img src="/aiday/brand/mark/mark.svg" alt="" width={28} height={28} />Claude Malaysia</span>
+          <span className="wordmark">Run It From Your Phone</span>
+        </div>
         <span className="meta">Internal dashboard · signed in as {who}</span>
-        <form method="post" action="/aiday/api/logout"><button className="btn line" type="submit" id="out" style={{ padding: "9px 14px", fontSize: "14px" }}>Sign out</button></form>
+        <form method="post" action="/aiday/api/logout"><button className="btn line" type="submit" id="out">Sign out</button></form>
       </div></header>
       <div className="in">
         <div className="head"><div><p className="kicker">Free AI day · Sun 15 Nov · 10am MYT</p><h1 style={{ marginTop: "8px" }}>How&apos;s the launch going?</h1></div><p id="upd">Loading the numbers…</p></div>
