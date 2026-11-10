@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type Props = { searchParams: Promise<{ name?: string | string[]; t?: string | string[] }> };
+type Props = { searchParams: Promise<{ name?: string | string[]; t?: string | string[]; vip?: string | string[] }> };
 
 const one = (v: string | string[] | undefined) => (typeof v === "string" ? v : "");
 
@@ -25,7 +25,7 @@ export default async function AidayThankYouPage({ searchParams }: Props) {
 
   return (
     <div className="aid-ty">
-      <TyView token={token} />
+      <TyView token={token} vipPaid={one(sp.vip) === "1"} />
       <nav className="flow" aria-label="Sign up steps, step 3 of 3"><div className="in"><ol><li className="done"><i>✓</i>Seat saved</li><li className="done"><i>✓</i>VIP upgrade</li><li className="now" aria-current="step"><i>3</i>You're in</li></ol></div></nav>
 
       <section className="cele"><Confetti /><div className="in">
