@@ -1,13 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { loadStripe, type Stripe } from "@stripe/stripe-js";
 import { anonId, captureAttribution, getAttribution, track } from "@/lib/aiday/client";
 import { PROGRAM, usd } from "@/lib/aiday/program";
 
 /*
  * AI Day Program checkout (client side). All payments live in EventOps:
- * these components call the /aiday/api/program/* proxies and send the
- * buyer to the Stripe Checkout url EventOps returns.
+ * these components call the /aiday/api/program/* proxies. EventOps answers
+ * with a Stripe embedded checkout ({clientSecret, publishableKey}), which
+ * opens in a sheet on this page, or a hosted Stripe url as the fallback.
  */
 
 const ERR = "That didn't go through. Check your connection and try again.";
@@ -27,13 +29,92 @@ function pixelCheckout(value: number) {
   }
 }
 
-/** POST to a proxy and go to the returned Stripe url. Throws with the HTTP status on failure. */
-async function goToCheckout(path: string, body: unknown): Promise<void> {
+type Embedded = { clientSecret: string; publishableKey: string };
+
+/**
+ * POST to a proxy. Embedded answer → returned for the on-page sheet.
+ * Hosted answer → we go to the Stripe url (and return null).
+ * Throws with the HTTP status on failure.
+ */
+async function startCheckout(path: string, body: unknown): Promise<Embedded | null> {
   const r = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  const data = (await r.json().catch(() => ({}))) as { url?: unknown };
+  const data = (await r.json().catch(() => ({}))) as { url?: unknown; clientSecret?: unknown; publishableKey?: unknown };
   if (!r.ok) throw Object.assign(new Error("checkout failed"), { status: r.status });
+  if (typeof data.clientSecret === "string" && typeof data.publishableKey === "string" && data.publishableKey.startsWith("pk_")) {
+    return { clientSecret: data.clientSecret, publishableKey: data.publishableKey };
+  }
   if (typeof data.url !== "string" || !data.url.startsWith("https://")) throw new Error("no checkout url");
   location.href = data.url;
+  return null;
+}
+
+// Open sessions kept for this page view, so closing and reopening the sheet
+// reuses the same Stripe session instead of starting a new one.
+const openSessions = new Map<string, Embedded>();
+
+const stripes = new Map<string, Promise<Stripe | null>>();
+function stripeFor(pk: string): Promise<Stripe | null> {
+  let p = stripes.get(pk);
+  if (!p) { p = loadStripe(pk); stripes.set(pk, p); }
+  return p;
+}
+
+// Stripe allows one embedded checkout at a time: mounts run one after another,
+// and each waits for the previous one to be destroyed.
+let mountQueue: Promise<void> = Promise.resolve();
+
+/** The Stripe payment form, on this page, in a sheet over the content. */
+function CheckoutSheet({ checkout, title, onClose }: { checkout: Embedded; title: string; onClose: () => void }) {
+  const mountRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    let destroy: (() => void) | null = null;
+    mountQueue = mountQueue.then(async () => {
+      if (cancelled) return;
+      try {
+        const stripe = await stripeFor(checkout.publishableKey);
+        if (!stripe) throw new Error("stripe.js did not load");
+        if (cancelled) return;
+        const c = await stripe.createEmbeddedCheckoutPage({ clientSecret: checkout.clientSecret });
+        destroy = () => { try { c.destroy(); } catch { /* already gone */ } };
+        if (cancelled || !mountRef.current) { destroy(); destroy = null; return; }
+        c.mount(mountRef.current);
+        setReady(true);
+      } catch {
+        if (!cancelled) setFailed(true);
+      }
+    });
+    return () => {
+      cancelled = true;
+      mountQueue = mountQueue.then(() => { destroy?.(); });
+    };
+  }, [checkout]);
+
+  // Esc closes; the page behind doesn't scroll while the sheet is open.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = prev; };
+  }, [onClose]);
+
+  return (
+    <div className="sheet-bg" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="sheet" role="dialog" aria-modal="true" aria-label={title}>
+        <div className="sheet-hd">
+          <p className="kicker">{title}</p>
+          <button type="button" className="sheet-x" onClick={onClose} aria-label="Close checkout">×</button>
+        </div>
+        {!ready && !failed && <div className="loading" role="status"><Spinner /> Loading secure checkout…</div>}
+        {failed && <p className="err" role="alert">{ERR}</p>}
+        <div ref={mountRef} className="sheet-body" />
+      </div>
+    </div>
+  );
 }
 
 function Spinner() {
@@ -53,16 +134,20 @@ export function ProgramView({ page }: { page: "join" | "balance" }) {
 export function DepositButton({ testParam }: { testParam: string }) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(false);
+  const [open, setOpen] = useState<Embedded | null>(null);
+  const close = useCallback(() => setOpen(null), []);
 
   async function go() {
     if (busy) return;
+    const cached = openSessions.get("deposit");
+    if (cached) { setOpen(cached); return; }
     setBusy(true);
     setErr(false);
     track("program_deposit_click");
     pixelCheckout(PROGRAM.depositUsd);
     try {
       const a = getAttribution();
-      await goToCheckout("/aiday/api/program/deposit-checkout", {
+      const c = await startCheckout("/aiday/api/program/deposit-checkout", {
         t: testParam || undefined,
         utm_source: a.utm_source,
         utm_medium: a.utm_medium,
@@ -70,6 +155,11 @@ export function DepositButton({ testParam }: { testParam: string }) {
         affiliate: a.affiliate,
         anon_id: anonId(),
       });
+      if (c) {
+        openSessions.set("deposit", c);
+        setOpen(c);
+        setBusy(false);
+      }
     } catch {
       setBusy(false);
       setErr(true);
@@ -82,6 +172,7 @@ export function DepositButton({ testParam }: { testParam: string }) {
         {busy ? (<><Spinner /> Opening secure checkout…</>) : (<>Reserve my seat <span className="ar" aria-hidden="true">→</span></>)}
       </button>
       {err && <p className="err" role="alert">{ERR}</p>}
+      {open && <CheckoutSheet checkout={open} title={`${usd(PROGRAM.depositUsd)} ${PROGRAM.currency} deposit`} onClose={close} />}
     </>
   );
 }
@@ -129,6 +220,8 @@ export function BalanceFlow({ token, session, paid }: { token: string; session: 
   const [settling, setSettling] = useState(false);
   const [busy, setBusy] = useState<"full" | "split" | null>(null);
   const [err, setErr] = useState("");
+  const [open, setOpen] = useState<{ plan: "full" | "split"; checkout: Embedded } | null>(null);
+  const close = useCallback(() => setOpen(null), []);
 
   const load = useCallback(async (signal: { stop: boolean }) => {
     if (!token) return;
@@ -175,12 +268,23 @@ export function BalanceFlow({ token, session, paid }: { token: string; session: 
 
   async function choose(plan: "full" | "split") {
     if (busy) return;
+    const cached = openSessions.get(plan);
+    if (cached) { setOpen({ plan, checkout: cached }); return; }
     setBusy(plan);
     setErr("");
     track("program_balance_click", { props: { plan } });
     pixelCheckout(plan === "full" ? PROGRAM.balanceUsd : PROGRAM.splitUsd);
     try {
-      await goToCheckout("/aiday/api/program/balance-checkout", { b: token, plan });
+      const c = await startCheckout("/aiday/api/program/balance-checkout", { b: token, plan });
+      if (c) {
+        // EventOps closes the buyer's previous balance session when a new one
+        // starts, so only the newest plan's session stays reusable.
+        openSessions.delete("full");
+        openSessions.delete("split");
+        openSessions.set(plan, c);
+        setOpen({ plan, checkout: c });
+        setBusy(null);
+      }
     } catch (e) {
       setBusy(null);
       if ((e as { status?: number }).status === 409) {
@@ -307,6 +411,13 @@ export function BalanceFlow({ token, session, paid }: { token: string; session: 
         </section>
       </div>
       {err && <p className="err" role="alert" style={{ marginTop: 14, textAlign: "left" }}>{err}</p>}
+      {open && (
+        <CheckoutSheet
+          checkout={open.checkout}
+          title={open.plan === "full" ? `Balance: ${usd(PROGRAM.balanceUsd)} ${PROGRAM.currency}` : `${PROGRAM.splitCount} x ${usd(PROGRAM.splitUsd)} ${PROGRAM.currency} monthly`}
+          onClose={close}
+        />
+      )}
     </div>
   );
 }
