@@ -1,0 +1,33 @@
+/* Claude Malaysia brand tokens. Copied from claudemalaysia.com/brand
+   (lib/brand/tokens.ts in kingsleylow123/claudemalaysia). Rules: BRAND_SYSTEM.md.
+   Every AI Day page uses these names; change values here only. */
+:root {
+  --paper: #FAF7F2;
+  --paper-2: #F2EBDF;
+  --card: #FFFDF9;
+  --ink: #211C16;
+  --ink-soft: #5F564B;
+  --ink-faint: #978C7B;
+  --clay: #D97757;
+  --clay-deep: #BE5C3B;
+  --clay-logo: #CF6A4C;
+  --clay-tint: rgba(217, 119, 87, .12);
+  --clay-tint-2: rgba(217, 119, 87, .20);
+  --line: rgba(33, 28, 22, .10);
+  --line-2: rgba(33, 28, 22, .18);
+  --honey: #B6802A;
+  --sage: #4B7A5A;
+  --rust: #A9533F;
+  --stone: #6E6657;
+  --wa: #25D366; /* WhatsApp button only */
+  --display: var(--font-montserrat), "Montserrat", ui-sans-serif, system-ui, sans-serif; /* 700, ALL CAPS */
+  --body: var(--font-lora), "Lora", Georgia, "Times New Roman", serif;                  /* body + UI */
+  --mono: var(--font-mono), "IBM Plex Mono", ui-monospace, monospace;                   /* labels, numbers */
+  --r-sm: 8px; --r-md: 13px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+}
+html { background: var(--paper); }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 2px solid var(--clay-deep); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

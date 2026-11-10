@@ -1,23 +1,20 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Montserrat, Lora, IBM_Plex_Mono } from "next/font/google";
+import "./_styles/brand.css";
 import Script from "next/script";
 
 /*
  * Run It From Your Phone (free AI day, 15 Nov 2026). Served at
  * www.claudemalaysia.com/aiday: the main site rewrites /aiday/* to this app,
- * which runs with basePath "/aiday". These pages are a faithful port of the
- * partner approved pack (Alaric, Kingsley and Rafay): the pack's own design,
- * no site nav or footer. One page, one action.
+ * which runs with basePath "/aiday". Styled to the Claude Malaysia brand
+ * (claudemalaysia.com/brand, rules in BRAND_SYSTEM.md). No site nav or footer.
+ * One page, one action.
  */
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-pjs",
-  display: "swap",
-  // No metric matched Arial fallback: glyphs Jakarta lacks (the → arrows) fall
-  // through to the pack's own system font stack, as in the source pages.
-  adjustFontFallback: false,
-});
+// Claude Malaysia brand type (claudemalaysia.com/brand): Montserrat Bold caps
+// for display, Lora for reading and UI, IBM Plex Mono for labels and numbers.
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-montserrat", display: "swap" });
+const lora = Lora({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-lora", display: "swap" });
+const plexMono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono", display: "swap" });
 
 // Same Meta Pixel as claudemalaysia.com, so AI Day ad traffic keeps tracking.
 const FB_PIXEL_ID = "3618851711751697";
@@ -29,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-MY" className={jakarta.variable}>
+    <html lang="en-MY" className={`${montserrat.variable} ${lora.variable} ${plexMono.variable}`}>
       <body style={{ margin: 0 }}>
         {children}
         <Script id="fb-pixel" strategy="afterInteractive">
