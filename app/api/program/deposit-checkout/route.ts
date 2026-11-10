@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { TEST_PARAM_RE, proxyJson, readJsonObject, str } from "@/lib/aiday/server";
 
-// /aiday/join "Reserve your seat" → EventOps makes the $500 deposit checkout → {url}.
+// /aiday/join "Reserve your seat" → EventOps makes the $500 deposit checkout → {clientSecret, publishableKey} for the on-page form, or {url} (hosted fallback).
 // Stripe collects name, email and phone, so nothing personal passes through here.
 export const dynamic = "force-dynamic";
 
@@ -10,7 +10,8 @@ export async function POST(req: NextRequest) {
   if (!b) return NextResponse.json({ ok: false, error: "bad request" }, { status: 400 });
 
   const t = str(b.t, 200);
-  const body: Record<string, string> = {
+  const body: Record<string, string | boolean> = {
+    embedded: true,
     utm_source: str(b.utm_source, 120),
     utm_medium: str(b.utm_medium, 120),
     utm_campaign: str(b.utm_campaign, 200),

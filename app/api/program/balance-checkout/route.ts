@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PROGRAM_TOKEN_RE, proxyJson, readJsonObject, str } from "@/lib/aiday/server";
 
-// /aiday/join/balance plan buttons → EventOps makes the balance checkout → {url} (409 if already set up).
+// /aiday/join/balance plan buttons → EventOps makes the balance checkout → on-page form or {url} (409 if already set up).
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
@@ -11,5 +11,5 @@ export async function POST(req: NextRequest) {
   if (!PROGRAM_TOKEN_RE.test(b) || (plan !== "full" && plan !== "split")) {
     return NextResponse.json({ ok: false, error: "missing or invalid fields" }, { status: 400 });
   }
-  return proxyJson(req, "/api/public/aiday/program/balance-checkout", { b, plan });
+  return proxyJson(req, "/api/public/aiday/program/balance-checkout", { b, plan, embedded: true });
 }
