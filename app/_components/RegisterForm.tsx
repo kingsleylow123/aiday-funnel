@@ -84,7 +84,7 @@ export function RegisterForm({ variant }: { variant: "top" | "bottom" }) {
     }
   }
 
-  const border = (k: Field) => (bad[k] ? { borderColor: "#E30000" } : undefined);
+  const border = (k: Field) => (bad[k] ? { borderColor: "var(--err)" } : undefined);
 
   return (
     <div
@@ -111,7 +111,7 @@ export function RegisterForm({ variant }: { variant: "top" | "bottom" }) {
           <input type="checkbox" id={`ok${x}`} name="ok" required />
           <label htmlFor={`ok${x}`}>{CONSENT_TEXT}</label>
         </div>
-        <button className="btn blue" type="submit" id={`go${x}`} disabled={busy}>
+        <button className="btn" type="submit" id={`go${x}`} disabled={busy}>
           {busy ? "Saving your seat…" : (<>Save my free seat <span className="ar">→</span></>)}
         </button>
         <p className="err" id={`err${x}`} role="alert" hidden={!err}>{err}</p>

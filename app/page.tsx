@@ -33,11 +33,13 @@ export const metadata: Metadata = {
 
 // claudemalaysia.com/aiday: step 1, the registration page. Ported from
 // AI-Day-Pack-Kingsley/summit-page.html (same sections, order and copy).
+// Styled to the Claude Malaysia brand: see _styles/summit.css and BRAND_SYSTEM.md.
 export default function AidaySummitPage() {
   return (
     <div className="aid-summit">
       <SummitBehaviors />
       <header className="topbar"><div className="in">
+        <span className="cm"><img src="/aiday/brand/mark/mark.svg" alt="" width={32} height={32} /><b>Claude Malaysia</b></span>
         <a className="wordmark" href="#register"><i></i>Run It From Your Phone</a>
         <span className="meta">Free live AI day · Sun 15 Nov · 10am MYT</span>
         <a className="btn" href="#register">Save my seat</a>
@@ -75,13 +77,13 @@ export default function AidaySummitPage() {
             <p>AI answers your question. <b>You still do the work by hand.</b></p>
             <p>AI saves you an hour. <b>The hour fills up with more work.</b></p>
           </div>
-          <p style={{ fontSize: "22px", fontWeight: "800", letterSpacing: "-.035em", marginTop: "28px" }}>You started a business to be free. Now everything runs through you.</p>
+          <p className="stmt">You started a business to be free. Now everything runs through you.</p>
         </div>
         <div className="answer">
           <p className="kicker">What nobody showed you</p>
           <h3>The answer isn't another tool. <span className="serif">It's the order.</span></h3>
           <p>There are 5 levels of AI in a business. Most owners are stuck at level 2: asking AI questions, then doing the work themselves. On 15 November we take you up one level at a time, live, until you can see your business running from your phone.</p>
-          <a className="btn light" href="#join">Save my free seat <span className="ar">→</span></a>
+          <a className="btn" href="#join">Save my free seat <span className="ar">→</span></a>
         </div>
       </div></section>
 
@@ -167,10 +169,10 @@ export default function AidaySummitPage() {
             </div>
           </article>
         </div>
-        <a className="btn light" href="#join" style={{ marginTop: "40px" }}>Join Alaric, Kingsley and Rafay <span className="ar">→</span></a>
+        <a className="btn" href="#join" style={{ marginTop: "40px" }}>Join Alaric, Kingsley and Rafay <span className="ar">→</span></a>
       </div></section>
 
-      <section className="band pap"><div className="in">
+      <section className="band"><div className="in">
         <p className="kicker">Stories</p>
         <h2 className="d2" style={{ marginTop: "14px" }}>Real owners. <span className="serif">Real results.</span></h2>
         <div className="stories">
@@ -184,7 +186,7 @@ export default function AidaySummitPage() {
         <p className="fine">Results are individual and depend on effort and circumstances. Shared by our teachers' clients and community members.</p>
       </div></section>
 
-      <section className="band faq"><div className="in">
+      <section className="band faq rule"><div className="in">
         <div>
           <p className="kicker">Still on the fence?</p>
           <h2 className="d2" style={{ marginTop: "14px" }}>Still wondering if this <span className="serif">is for you?</span></h2>
@@ -201,8 +203,8 @@ export default function AidaySummitPage() {
       </div></section>
 
       <section className="band close"><div className="in">
-        <p className="kicker" style={{ color: "var(--hi)" }}>Sunday 15 November · 10am · Online</p>
-        <h2 className="d2">Stop running everything. <span className="serif" style={{ color: "#8FA6FF" }}>Run it from your phone.</span></h2>
+        <p className="kicker">Sunday 15 November · 10am · Online</p>
+        <h2 className="d2">Stop running everything. <span className="serif">Run it from your phone.</span></h2>
         <Countdown />
         <RegisterForm variant="bottom" />
       </div></section>
@@ -212,7 +214,7 @@ export default function AidaySummitPage() {
         <span>{aidayCompanyLine()} · <a href="/privacy" target="_blank" rel="noopener">Privacy</a> · <a href="/terms" target="_blank" rel="noopener">Terms</a></span>
       </div></footer>
 
-      <div className="sticky"><div><b>Free AI day</b>Sun 15 Nov · 10am · Online</div><a className="btn blue" href="#register">Save my seat</a></div>
+      <div className="sticky"><div><b>Free AI day</b>Sun 15 Nov · 10am · Online</div><a className="btn" href="#register">Save my seat</a></div>
     </div>
   );
 }
