@@ -27,7 +27,7 @@ export const AIDAY_VIP_PRICE_RM = 47;
 export const AIDAY_CALENDAR_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
   encodeURIComponent("Free AI day, live on Zoom") +
-  "&dates=20261115T020000Z/20261115T061500Z&details=" +
+  "&dates=20261115T020000Z/20261115T061000Z&details=" +
   encodeURIComponent(
-    "Alaric, Kingsley and Rafay. 10am to about 2:15pm Malaysia time. Your Zoom link comes by email and WhatsApp the day before.",
+    "Alaric, Kingsley and Rafay. 10am to about 2:10pm Malaysia time. Your Zoom link comes by email and WhatsApp the day before.",
   );
