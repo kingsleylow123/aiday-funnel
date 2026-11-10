@@ -13,6 +13,9 @@ const NAMES = new Set([
   "quiz_complete",
   "calendar_click",
   "whatsapp_click",
+  "program_view",
+  "program_deposit_click",
+  "program_balance_click",
 ]);
 
 export async function POST(req: NextRequest) {

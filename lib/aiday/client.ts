@@ -111,7 +111,10 @@ export type AidayEvent =
   | "vip_click"
   | "quiz_complete"
   | "calendar_click"
-  | "whatsapp_click";
+  | "whatsapp_click"
+  | "program_view"
+  | "program_deposit_click"
+  | "program_balance_click";
 
 export function track(name: AidayEvent, opts: { token?: string; props?: Record<string, unknown> } = {}): void {
   try {
