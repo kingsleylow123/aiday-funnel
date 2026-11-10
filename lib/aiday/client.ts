@@ -50,12 +50,16 @@ export function captureAttribution(): Attribution {
   } catch {
     ref = "";
   }
+  const affiliate = clean(q.get("a"), 80) || affiliateFromBeacon();
+  // EventOps drops the affiliate field from its stats, but counts utm_source.
+  // So an affiliate link with no UTMs also reports as source = handle,
+  // medium = "affiliate", and shows in the dashboard's Sources table.
   const fresh: Attribution = {
-    utm_source: clean(q.get("utm_source"), 120),
-    utm_medium: clean(q.get("utm_medium"), 120),
+    utm_source: clean(q.get("utm_source"), 120) || affiliate,
+    utm_medium: clean(q.get("utm_medium"), 120) || (affiliate ? "affiliate" : ""),
     utm_campaign: clean(q.get("utm_campaign"), 200),
     referrer: clean(ref, 500),
-    affiliate: clean(q.get("a"), 80) || affiliateFromBeacon(),
+    affiliate,
   };
   const out: Attribution = stored
     ? {
