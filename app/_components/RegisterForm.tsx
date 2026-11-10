@@ -83,7 +83,10 @@ export function RegisterForm({ variant }: { variant: "top" | "bottom" }) {
       }
       const q = new URLSearchParams({ name: fn.slice(0, 40) });
       if (token) q.set("t", token);
-      location.href = `/aiday/vip?${q.toString()}`;
+      // Short pause so the pixel request leaves before the page changes.
+      setTimeout(() => {
+        location.href = `/aiday/vip?${q.toString()}`;
+      }, 300);
     } catch {
       setBusy(false);
       setErr(ERR_NETWORK);
