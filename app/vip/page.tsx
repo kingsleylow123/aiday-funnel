@@ -14,6 +14,7 @@ const one = (v: string | string[] | undefined) => (typeof v === "string" ? v : "
 
 // claudemalaysia.com/aiday/vip: step 2, the VIP offer right after registering.
 // Ported from AI-Day-Pack-Kingsley/vip-page.html. Order box sits on the first screen.
+// Styled to the Claude Malaysia brand (BRAND_SYSTEM.md, app/_styles/vip.css).
 export default async function AidayVipPage({ searchParams }: Props) {
   const sp = await searchParams;
   const name = one(sp.name).slice(0, 40);
@@ -26,6 +27,7 @@ export default async function AidayVipPage({ searchParams }: Props) {
   return (
     <div className="aid-vip">
       <VipView token={token} />
+      <header className="brandbar"><div className="in"><img src="/aiday/brand/mark/mark.svg" alt="" width={32} height={32} /><span>Claude Malaysia</span></div></header>
       <nav className="flow" aria-label="Sign up steps, step 2 of 3"><div className="in"><ol><li className="done"><i>✓</i>Seat saved</li><li className="now" aria-current="step"><i>2</i>VIP upgrade</li><li><i>3</i>You're in</li></ol></div></nav>
 
       <section className="stage"><div className="in">

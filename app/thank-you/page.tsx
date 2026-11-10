@@ -15,7 +15,8 @@ const one = (v: string | string[] | undefined) => (typeof v === "string" ? v : "
 
 // claudemalaysia.com/aiday/thank-you: step 3. Confetti once, three action
 // cards, the three hours, one 6 question quiz. Ported from
-// AI-Day-Pack-Kingsley/thank-you-page.html.
+// AI-Day-Pack-Kingsley/thank-you-page.html. Styled to the Claude Malaysia
+// brand (BRAND_SYSTEM.md, app/_styles/thank-you.css).
 export default async function AidayThankYouPage({ searchParams }: Props) {
   const sp = await searchParams;
   const name = one(sp.name).trim().slice(0, 30);
@@ -26,6 +27,7 @@ export default async function AidayThankYouPage({ searchParams }: Props) {
   return (
     <div className="aid-ty">
       <TyView token={token} />
+      <header className="brandbar"><div className="in"><img src="/aiday/brand/mark/mark.svg" alt="" width={32} height={32} /><span>Claude Malaysia</span></div></header>
       <nav className="flow" aria-label="Sign up steps, step 3 of 3"><div className="in"><ol><li className="done"><i>✓</i>Seat saved</li><li className="done"><i>✓</i>VIP upgrade</li><li className="now" aria-current="step"><i>3</i>You're in</li></ol></div></nav>
 
       <section className="cele"><Confetti /><div className="in">

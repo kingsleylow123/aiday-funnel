@@ -51,7 +51,7 @@ export function VipYes({ id, token, position }: { id: string; token: string; pos
         Yes, add VIP to my seat <span className="ar">→</span>
       </a>
       {err && (
-        <p role="alert" style={{ color: position === "top" ? "#FF8A8A" : "#C00000", fontSize: "14px", textAlign: "center", fontWeight: 600 }}>
+        <p role="alert" className="err">
           {ERR}
         </p>
       )}
