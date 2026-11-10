@@ -12,7 +12,7 @@ export function TyView({ token }: { token: string }) {
   return null;
 }
 
-/** Confetti, once, respects reduced motion. Same particles and timing as the pack. */
+/** Confetti, once, respects reduced motion. Same particles and timing as the pack, brand colours. */
 export function Confetti() {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -23,7 +23,8 @@ export function Confetti() {
     const dpr = devicePixelRatio || 1;
     const W = (c.width = c.offsetWidth * dpr);
     const H = (c.height = c.offsetHeight * dpr);
-    const col = ["#2D5BFF", "#FFE14D", "#0E0F12", "#8FA6FF"];
+    // Brand colours: clay, clay deep, ink, ink faint.
+    const col = ["#D97757", "#BE5C3B", "#211C16", "#978C7B"];
     const P = Array.from({ length: 110 }, (_, i) => ({
       x: Math.random() * W,
       y: -Math.random() * H * 0.6,
@@ -207,8 +208,8 @@ export function Quiz({ token }: { token: string }) {
             <div key={k} className={k === level ? "me" : undefined}><small>{k}</small><b>{NAMES[k]}</b></div>
           ))}
         </div>
-        <p id="qzT" style={{ color: "var(--muted)", fontSize: "17px" }}>{level ? HOUR[level] : ""}</p>
-        <p style={{ fontSize: "15px", color: "var(--muted)" }}>Thank you. Your answers help us choose what we build live on Sunday.</p>
+        <p id="qzT" className="muted" style={{ fontSize: "17px" }}>{level ? HOUR[level] : ""}</p>
+        <p className="muted" style={{ fontSize: "15px" }}>Thank you. Your answers help us choose what we build live on Sunday.</p>
         <div className="nav">
           <span />
           <button type="button" className="link" id="again" onClick={() => { setI(0); setScores({}); setLevel(0); }}>Take it again</button>
