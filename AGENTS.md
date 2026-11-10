@@ -32,6 +32,6 @@ Styles: `app/_styles/`. Photos and logos: `public/assets/` (use them as `/aiday/
 - Never put passwords, keys or customer data in code, commits or chat.
 - Don't change `app/api/*`, `lib/aiday/server.ts` or `lib/aiday/session.ts`
   unless you know why: they handle sign ups, payments and the dashboard login.
-- Keep the pack's design: Plus Jakarta Sans, one blue, no italics.
+- Follow the Claude Malaysia brand (claudemalaysia.com/brand). Read BRAND_SYSTEM.md before any visual change. Use the tokens in app/_styles/brand.css: paper background, ink text, clay #D97757 buttons with ink text. Headlines are Montserrat Bold ALL CAPS. Body and buttons are Lora. Labels and numbers are IBM Plex Mono. No italics, no blue, no gradients.
 - The dashboard login uses env vars on Vercel (AIDAY_DASH_SECRET and
   AIDAY_DASH_PASS_<NAME>). Ask Kingsley to change a password.
