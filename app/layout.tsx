@@ -4,7 +4,7 @@ import Script from "next/script";
 import { AIDAY_PIXEL_ID, SITE_PIXEL_ID } from "@/lib/aiday/pixel";
 
 /*
- * Run It From Your Phone (free AI day, 15 Nov 2026). Served at
+ * Run It From Your Phone (free AI day, 15 Dec 2026). Served at
  * www.claudemalaysia.com/aiday: the main site rewrites /aiday/* to this app,
  * which runs with basePath "/aiday". These pages are a faithful port of the
  * partner approved pack (Alaric, Kingsley and Rafay): the pack's own design,

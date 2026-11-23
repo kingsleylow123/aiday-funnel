@@ -1,14 +1,15 @@
 /**
- * Run It From Your Phone: free online AI day, Sunday 15 Nov 2026, 10am MYT.
+ * Run It From Your Phone: free online AI day, Tuesday 15 Dec 2026, 7pm to 10pm MYT.
  * Shared constants for /aiday, /aiday/vip, /aiday/thank-you and /aiday/internal.
  * Safe to import from client components (no secrets here).
  */
 
+/** Kept from the first date (15 Nov) so registrations carry over to 15 Dec. */
 export const AIDAY_EVENT = "ai-day-2026-11-15";
 
-/** 10:00 MYT on Sunday 15 Nov 2026. */
-export const AIDAY_START_ISO = "2026-11-15T02:00:00Z";
-export const AIDAY_START_MS = Date.UTC(2026, 10, 15, 2, 0, 0);
+/** 19:00 MYT on Tuesday 15 Dec 2026. Ends 22:00 MYT. */
+export const AIDAY_START_ISO = "2026-12-15T11:00:00Z";
+export const AIDAY_START_MS = Date.UTC(2026, 11, 15, 11, 0, 0);
 
 export const AIDAY_SHARE_URL = "https://www.claudemalaysia.com/aiday";
 
@@ -27,7 +28,7 @@ export const AIDAY_VIP_PRICE_RM = 47;
 export const AIDAY_CALENDAR_URL =
   "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
   encodeURIComponent("Free AI day, live on Zoom") +
-  "&dates=20261115T020000Z/20261115T061000Z&details=" +
+  "&dates=20261215T110000Z/20261215T140000Z&details=" +
   encodeURIComponent(
-    "Alaric, Kingsley and Rafay. 10am to about 2:10pm Malaysia time. Your Zoom link comes by email and WhatsApp the day before.",
+    "Alaric, Kingsley and Rafay. 7pm to 10pm Malaysia time. Your Zoom link comes by email and WhatsApp the day before.",
   );

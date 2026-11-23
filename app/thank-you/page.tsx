@@ -30,12 +30,12 @@ export default async function AidayThankYouPage({ searchParams }: Props) {
 
       <section className="cele"><Confetti /><div className="in">
         <p className="kicker">Congratulations<span id="nm">{name ? `, ${name}` : ""}</span></p>
-        <h1 className="d1">You're in. <span className="serif">Sunday changes everything.</span></h1>
-        <p className="lede">In four hours you'll find your level, build your first AI helper, and watch a business run from a phone. Here's everything you need.</p>
-        <div className="when"><span>Sun 15 November</span><span>10am to 2:10pm MYT</span><span>Live on Zoom</span></div>
+        <h1 className="d1">You're in. <span className="serif">Tuesday night changes everything.</span></h1>
+        <p className="lede">In three hours you'll find your level, build your first AI helper, and watch a business run from a phone. Here's everything you need.</p>
+        <div className="when"><span>Tue 15 December</span><span>7pm to 10pm MYT</span><span>Live on Zoom</span></div>
         <p className="cdl">Starts in <StartsIn /></p>
         <div className="acts" aria-label="Do these three things now">
-          <div className="act"><div><small>Step 1</small><b>Add it to your calendar</b><p>So Sunday morning stays free.</p></div><TrackedLink className="btn line" id="cal" href={AIDAY_CALENDAR_URL} target="_blank" rel="noopener" event="calendar_click" token={token}>Add to calendar</TrackedLink></div>
+          <div className="act"><div><small>Step 1</small><b>Add it to your calendar</b><p>So Tuesday night stays free.</p></div><TrackedLink className="btn line" id="cal" href={AIDAY_CALENDAR_URL} target="_blank" rel="noopener" event="calendar_click" token={token}>Add to calendar</TrackedLink></div>
           <div className="act"><div><small>Step 2</small><b>Join the WhatsApp group</b><p>Your Zoom link and reminders land here first.</p></div><WhatsAppLink base={waUrl} token={token} /></div>
           <div className="act"><div><small>Step 3</small><b>Find your level</b><p>One quick quiz, 45 seconds. We start from your answer.</p></div><a className="btn blue" href="#quiz">Take the quiz <span className="ar">→</span></a></div>
         </div>
@@ -43,11 +43,11 @@ export default async function AidayThankYouPage({ searchParams }: Props) {
 
       <section className="band walk"><div className="in">
         <p className="kicker">What you'll walk away with</p>
-        <h2 className="d2" style={{ marginTop: "14px" }}>Three hours. <span className="serif">Three things you'll have.</span></h2>
+        <h2 className="d2" style={{ marginTop: "14px" }}>Three teachers. <span className="serif">Three things you'll have.</span></h2>
         <div className="hrs">
-          <div className="h"><div className="photo"><img src="/aiday/assets/kingsley-lg.jpg" alt="Kingsley Low" /></div><span className="tag">Hour 1 · 10:10 · Kingsley</span><b>Your first AI helper, working.</b><p>You build it along with Kingsley, step by step, for your own business.</p><p className="out"><span>You leave with</span> a helper that does a task you do every week.</p></div>
-          <div className="h"><div className="photo"><img src="/aiday/assets/alaric-lg.jpg" alt="Alaric Ong" /></div><span className="tag">Hour 2 · 11:10 · Alaric</span><b>AI that sells for you.</b><p>Your offer, your ad and your follow ups, written with AI while you watch.</p><p className="out"><span>You leave with</span> words that sell, ready to post and send.</p></div>
-          <div className="h"><div className="photo"><img src="/aiday/assets/rafay-talk.jpg" alt="Rafay Korai" /></div><span className="tag">Hour 3 · 12:10 · Rafay</span><b>The Power CEO, live.</b><p>A real business run from a phone, on screen: leads, posts, invoices and ads.</p><p className="out"><span>You leave with</span> the picture of where you're going, and the steps.</p></div>
+          <div className="h"><div className="photo"><img src="/aiday/assets/kingsley-lg.jpg" alt="Kingsley Low" /></div><span className="tag">7:00pm · Kingsley</span><b>Your first AI helper, working.</b><p>You build it along with Kingsley, step by step, for your own business.</p><p className="out"><span>You leave with</span> a helper that does a task you do every week.</p></div>
+          <div className="h"><div className="photo"><img src="/aiday/assets/alaric-lg.jpg" alt="Alaric Ong" /></div><span className="tag">7:45pm · Alaric</span><b>AI that sells for you.</b><p>Your offer, your ad and your follow ups, written with AI while you watch.</p><p className="out"><span>You leave with</span> words that sell, ready to post and send.</p></div>
+          <div className="h"><div className="photo"><img src="/aiday/assets/rafay-talk.jpg" alt="Rafay Korai" /></div><span className="tag">8:30pm · Rafay</span><b>The Power CEO, live.</b><p>A real business run from a phone, on screen: leads, posts, invoices and ads.</p><p className="out"><span>You leave with</span> the picture of where you're going, and the steps.</p></div>
         </div>
       </div></section>
 
@@ -59,7 +59,7 @@ export default async function AidayThankYouPage({ searchParams }: Props) {
       </div></section>
 
       <section className="band bring"><div className="in">
-        <div><p className="kicker">Bring these on Sunday</p><ul><li>A laptop and your phone</li><li>A free AI account (we show you which at the start)</li><li>One task you repeat every week</li><li>One product or service you want to sell more of</li></ul></div>
+        <div><p className="kicker">Bring these on Tuesday night</p><ul><li>A laptop and your phone</li><li>A free AI account (we show you which at the start)</li><li>One task you repeat every week</li><li>One product or service you want to sell more of</li></ul></div>
         <div><p className="kicker">Bring a friend who runs a business</p><p className="d3" style={{ marginTop: "14px" }}>Their seat is free too. <span className="serif">Send them this.</span></p><CopyLink url={AIDAY_SHARE_URL} /></div>
       </div></section>
 
