@@ -1,4 +1,4 @@
-# AI Day funnel (Run It From Your Phone, Sun 15 Nov 2026)
+# AI Day funnel (Run It From Your Phone, Tue 15 Dec 2026, 7pm to 10pm MYT)
 
 The free AI Day pages, live at **www.claudemalaysia.com/aiday**. Owned by
 Alaric, Kingsley and Rafay. This repo holds only these pages.

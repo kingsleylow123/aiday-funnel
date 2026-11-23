@@ -6,9 +6,9 @@ import { RegisterForm } from "./_components/RegisterForm";
 import { SummitBehaviors } from "./_components/SummitBehaviors";
 import { aidayCompanyLine } from "@/lib/aiday/config";
 
-const TITLE = "Free AI Day, 15 Nov | Run your whole business from your phone";
+const TITLE = "Free AI Day, 15 Dec | Run your whole business from your phone";
 const DESCRIPTION =
-  "A free live AI day on Zoom, Sunday 15 November, 10am Malaysia time. Alaric, Kingsley and Rafay teach one hour each, so you can run your whole business from your phone.";
+  "A free live AI evening on Zoom, Tuesday 15 December, 7pm to 10pm Malaysia time. Alaric, Kingsley and Rafay teach 45 minutes each, so you can run your whole business from your phone.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Claude Malaysia",
     locale: "en_MY",
     type: "website",
-    images: [{ url: "/aiday/og.jpg", width: 1200, height: 630, alt: "Run your whole business from your phone. Free live AI day, Sunday 15 November, 10am MYT." }],
+    images: [{ url: "/aiday/og.jpg", width: 1200, height: 630, alt: "Run your whole business from your phone. Free live AI day, Tuesday 15 December, 7pm MYT." }],
   },
   twitter: {
     card: "summary_large_image",
@@ -39,19 +39,19 @@ export default function AidaySummitPage() {
       <SummitBehaviors />
       <header className="topbar"><div className="in">
         <a className="wordmark" href="#register"><i></i>Run It From Your Phone</a>
-        <span className="meta">Free live AI day · Sun 15 Nov · 10am MYT</span>
+        <span className="meta">Free live AI day · Tue 15 Dec · 7pm MYT</span>
         <a className="btn" href="#register">Save my seat</a>
       </div></header>
 
       <section className="hero"><div className="in">
         <div>
-          <p className="kicker">Free live AI day · <span className="lg">Sunday 15 November</span><span className="sm">Sun 15 Nov</span> · 10am MYT · Zoom</p>
+          <p className="kicker">Free live AI day · <span className="lg">Tuesday 15 December</span><span className="sm">Tue 15 Dec</span> · 7pm MYT · Zoom</p>
           <h1 className="d1">Run your whole business <span className="serif">from your phone.</span></h1>
-          <p className="lede">Give us four hours on Sunday. Get <span className="mark">one day back every single week</span>, with AI doing real work in your business.</p>
+          <p className="lede">Give us three hours on Tuesday night. Get <span className="mark">one day back every single week</span>, with AI doing real work in your business.</p>
           <div className="trio" aria-label="Your three teachers">
-            <figure><div className="photo"><img src="/aiday/assets/alaric-lg.jpg" alt="Alaric Ong on stage" /></div><figcaption><span className="hr">Hour 2</span><b>Alaric Ong</b><span>Founder and CEO, Alaric.AI</span></figcaption></figure>
-            <figure><div className="photo"><img src="/aiday/assets/kingsley-lg.jpg" alt="Kingsley Low" /></div><figcaption><span className="hr">Hour 1</span><b>Kingsley Low</b><span>Founder and CEO, Claude Malaysia</span></figcaption></figure>
-            <figure><div className="photo"><img src="/aiday/assets/rafay-talk.jpg" alt="Rafay Korai speaking on stage" /></div><figcaption><span className="hr">Hour 3</span><b>Rafay Korai</b><span>Managing Director, Mindvalley</span></figcaption></figure>
+            <figure><div className="photo"><img src="/aiday/assets/alaric-lg.jpg" alt="Alaric Ong on stage" /></div><figcaption><span className="hr">7:45pm</span><b>Alaric Ong</b><span>Founder and CEO, Alaric.AI</span></figcaption></figure>
+            <figure><div className="photo"><img src="/aiday/assets/kingsley-lg.jpg" alt="Kingsley Low" /></div><figcaption><span className="hr">7:00pm</span><b>Kingsley Low</b><span>Founder and CEO, Claude Malaysia</span></figcaption></figure>
+            <figure><div className="photo"><img src="/aiday/assets/rafay-talk.jpg" alt="Rafay Korai speaking on stage" /></div><figcaption><span className="hr">8:30pm</span><b>Rafay Korai</b><span>Managing Director, Mindvalley</span></figcaption></figure>
           </div>
         </div>
 
@@ -80,7 +80,7 @@ export default function AidaySummitPage() {
         <div className="answer">
           <p className="kicker">What nobody showed you</p>
           <h3>The answer isn't another tool. <span className="serif">It's the order.</span></h3>
-          <p>There are 5 levels of AI in a business. Most owners are stuck at level 2: asking AI questions, then doing the work themselves. On 15 November we take you up one level at a time, live, until you can see your business running from your phone.</p>
+          <p>There are 5 levels of AI in a business. Most owners are stuck at level 2: asking AI questions, then doing the work themselves. On 15 December we take you up one level at a time, live, until you can see your business running from your phone.</p>
           <a className="btn light" href="#join">Save my free seat <span className="ar">→</span></a>
         </div>
       </div></section>
@@ -89,9 +89,9 @@ export default function AidaySummitPage() {
         <p className="kicker">Before and after the 15th</p>
         <h2 className="d2" style={{ marginTop: "14px" }}>Three hours. <span className="serif">Three changes you can see.</span></h2>
         <div className="chg">
-          <div className="row"><div className="who"><img src="/aiday/assets/kingsley-lg.jpg" alt="" /><div><span>Hour 1</span><b>Kingsley Low</b></div></div><p className="b4">AI answers your questions. You still do the work.</p><p className="af">Your AI helper does the work. You check it.</p></div>
-          <div className="row"><div className="who"><img src="/aiday/assets/alaric-lg.jpg" alt="" /><div><span>Hour 2</span><b>Alaric Ong</b></div></div><p className="b4">Leads come in and go cold while you're busy.</p><p className="af">AI writes the offer, the ad and every follow up.</p></div>
-          <div className="row"><div className="who"><img src="/aiday/assets/rafay-close.jpg" alt="" /><div><span>Hour 3</span><b>Rafay Korai</b></div></div><p className="b4">Everything runs through you, on ten tabs.</p><p className="af">The business runs from your phone. You decide.</p></div>
+          <div className="row"><div className="who"><img src="/aiday/assets/kingsley-lg.jpg" alt="" /><div><span>7:00pm</span><b>Kingsley Low</b></div></div><p className="b4">AI answers your questions. You still do the work.</p><p className="af">Your AI helper does the work. You check it.</p></div>
+          <div className="row"><div className="who"><img src="/aiday/assets/alaric-lg.jpg" alt="" /><div><span>7:45pm</span><b>Alaric Ong</b></div></div><p className="b4">Leads come in and go cold while you're busy.</p><p className="af">AI writes the offer, the ad and every follow up.</p></div>
+          <div className="row"><div className="who"><img src="/aiday/assets/rafay-close.jpg" alt="" /><div><span>8:30pm</span><b>Rafay Korai</b></div></div><p className="b4">Everything runs through you, on ten tabs.</p><p className="af">The business runs from your phone. You decide.</p></div>
         </div>
       </div></section>
 
@@ -103,14 +103,13 @@ export default function AidaySummitPage() {
       </div></section>
 
       <section className="band" id="day"><div className="in">
-        <p className="kicker">The agenda · Sunday 15 November · Malaysia time</p>
-        <h2 className="d2" style={{ marginTop: "14px" }}>Four hours. <span className="serif">One level up.</span></h2>
+        <p className="kicker">The agenda · Tuesday 15 December · Malaysia time</p>
+        <h2 className="d2" style={{ marginTop: "14px" }}>Three hours. <span className="serif">One level up.</span></h2>
         <div className="ag">
-          <div className="slot"><span className="tm">10:00<small>10 min</small></span><span className="face all">All<br />three</span><div><h3>Your level, found</h3><p>Bring your quiz result. We start from where you are.</p></div><span className="lv">Starting point</span></div>
-          <div className="slot hour"><span className="tm">10:10<small>Hour 1</small></span><span className="face"><img src="/aiday/assets/kingsley-lg.jpg" alt="" /></span><div><h3><span className="live">Live build</span>Build your first AI helper</h3><p>Kingsley Low. You build along. It works for your business by 11:10.</p></div><span className="lv">Asker → Amplifier</span></div>
-          <div className="slot hour"><span className="tm">11:10<small>Hour 2</small></span><span className="face"><img src="/aiday/assets/alaric-lg.jpg" alt="" /></span><div><h3><span className="live">Live build</span>AI that sells for you</h3><p>Alaric Ong. Your offer, your ad and your follow ups, written with AI live.</p></div><span className="lv">Amplifier → Builder</span></div>
-          <div className="slot hour"><span className="tm">12:10<small>Hour 3</small></span><span className="face"><img src="/aiday/assets/rafay-close.jpg" alt="" /></span><div><h3><span className="live">Live demo</span>The Power CEO</h3><p>Rafay Korai. A real business run from a phone, on screen.</p></div><span className="lv">Builder → Power CEO</span></div>
-          <div className="slot"><span className="tm">1:10<small>Hour 4</small></span><span className="face all">All<br />three</span><div><h3>Your questions, live</h3><p>A full hour to ask all three of us anything: your business, your tools, your next step. Ends about 2:10pm.</p></div><span className="lv">Live Q&amp;A</span></div>
+          <div className="slot hour"><span className="tm">7:00<small>45 min</small></span><span className="face"><img src="/aiday/assets/kingsley-lg.jpg" alt="" /></span><div><h3><span className="live">Live build</span>Build your first AI helper</h3><p>Kingsley Low. We start from your level, then you build along. It works for your business by 7:45.</p></div><span className="lv">Asker → Amplifier</span></div>
+          <div className="slot hour"><span className="tm">7:45<small>45 min</small></span><span className="face"><img src="/aiday/assets/alaric-lg.jpg" alt="" /></span><div><h3><span className="live">Live build</span>AI that sells for you</h3><p>Alaric Ong. Your offer, your ad and your follow ups, written with AI live.</p></div><span className="lv">Amplifier → Builder</span></div>
+          <div className="slot hour"><span className="tm">8:30<small>45 min</small></span><span className="face"><img src="/aiday/assets/rafay-close.jpg" alt="" /></span><div><h3><span className="live">Live demo</span>The Power CEO</h3><p>Rafay Korai. A real business run from a phone, on screen.</p></div><span className="lv">Builder → Power CEO</span></div>
+          <div className="slot"><span className="tm">9:15<small>45 min</small></span><span className="face all">All<br />three</span><div><h3>Your next step, and your questions</h3><p>How to keep building with all three of us, then your questions answered live. Ends at 10pm.</p></div><span className="lv">Next step · Q&amp;A</span></div>
         </div>
         <a className="btn" href="#join" style={{ marginTop: "36px" }}>Save my free seat <span className="ar">→</span></a>
       </div></section>
@@ -127,7 +126,7 @@ export default function AidaySummitPage() {
           <article className="pf">
             <div className="photo"><img src="/aiday/assets/alaric-lg.jpg" alt="Alaric Ong on stage" /></div>
             <div className="tx">
-              <span className="hr">Hour 2 · AI that sells · 11:10am</span>
+              <span className="hr">7:45pm · AI that sells · 45 minutes</span>
               <h3>Alaric Ong</h3>
               <p className="ttl">Founder and CEO, Alaric.AI and OmniConvo.AI · Entrepreneur, speaker, author</p>
               <p className="claim">Zero to <em>USD 1.2M in 18 months</em>, with no starting capital.</p>
@@ -141,7 +140,7 @@ export default function AidaySummitPage() {
           <article className="pf">
             <div className="photo"><img src="/aiday/assets/kingsley-lg.jpg" alt="Kingsley Low" /></div>
             <div className="tx">
-              <span className="hr">Hour 1 · Your first AI helper · 10:10am</span>
+              <span className="hr">7:00pm · Your first AI helper · 45 minutes</span>
               <h3>Kingsley Low</h3>
               <p className="ttl">Founder and CEO, Claude Malaysia and CloserKing.AI</p>
               <p className="claim">From his last 10k in savings to <em>USD 64K closed in 99 days.</em></p>
@@ -155,7 +154,7 @@ export default function AidaySummitPage() {
           <article className="pf">
             <div className="photo"><img src="/aiday/assets/rafay-close.jpg" alt="Rafay Korai" /></div>
             <div className="tx">
-              <span className="hr">Hour 3 · The Power CEO · 12:10pm</span>
+              <span className="hr">8:30pm · The Power CEO · 45 minutes</span>
               <h3>Rafay Korai</h3>
               <p className="ttl">Managing Director, Mindvalley · AI builder</p>
               <p className="claim">Took a membership business from <em>zero to USD 80M in two years.</em></p>
@@ -193,7 +192,7 @@ export default function AidaySummitPage() {
           <details open><summary>I'm not technical. Will I understand it?</summary><p>Yes. No coding. We go step by step in plain words, and you build along.</p></details>
           <details><summary>I already use ChatGPT or Claude. What's different?</summary><p>That's level 2. This day shows you levels 3 to 5: AI that does the work, sells for you, and runs from your phone.</p></details>
           <details><summary>Will it work for my kind of business?</summary><p>Yes. Shops, services, agencies, coaching, F&amp;B, property. New or already running.</p></details>
-          <details><summary>What if I can't stay for four hours?</summary><p>Come for your hour. The free replay is up for 48 hours.</p></details>
+          <details><summary>What if I can't stay for all three hours?</summary><p>Come for the part you need most. The free replay is up for 48 hours.</p></details>
           <details><summary>Is it really free?</summary><p>Yes. The live day and the 48 hour replay are free.</p></details>
           <details><summary>Will you sell something?</summary><p>Near the end we explain how to build it with us in KL in January. You get full value without buying anything.</p></details>
           <details><summary>What language is it in?</summary><p>English.</p></details>
@@ -201,7 +200,7 @@ export default function AidaySummitPage() {
       </div></section>
 
       <section className="band close"><div className="in">
-        <p className="kicker" style={{ color: "var(--hi)" }}>Sunday 15 November · 10am · Online</p>
+        <p className="kicker" style={{ color: "var(--hi)" }}>Tuesday 15 December · 7pm · Online</p>
         <h2 className="d2">Stop running everything. <span className="serif" style={{ color: "#8FA6FF" }}>Run it from your phone.</span></h2>
         <Countdown />
         <RegisterForm variant="bottom" />
@@ -212,7 +211,7 @@ export default function AidaySummitPage() {
         <span>{aidayCompanyLine()} · <a href="/privacy" target="_blank" rel="noopener">Privacy</a> · <a href="/terms" target="_blank" rel="noopener">Terms</a></span>
       </div></footer>
 
-      <div className="sticky"><div><b>Free AI day</b>Sun 15 Nov · 10am · Online</div><a className="btn blue" href="#register">Save my seat</a></div>
+      <div className="sticky"><div><b>Free AI day</b>Tue 15 Dec · 7pm · Online</div><a className="btn blue" href="#register">Save my seat</a></div>
     </div>
   );
 }

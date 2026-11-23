@@ -43,7 +43,7 @@ function normalize(raw: Record<string, unknown>): Stats {
     updated_at: typeof raw.updated_at === "string" ? raw.updated_at : new Date().toISOString(),
     goal: num(raw.goal, 5000) || 5000,
     launch: typeof raw.launch === "string" ? raw.launch : "2026-11-08",
-    event_day: typeof raw.event_day === "string" ? raw.event_day : "2026-11-15",
+    event_day: typeof raw.event_day === "string" ? raw.event_day : "2026-12-15",
     vip_price_rm: num(raw.vip_price_rm, 47),
     funnel: {
       visitors: num(F.visitors), registered: num(F.registered), vip_viewed: num(F.vip_viewed), vip_paid: num(F.vip_paid),
@@ -101,25 +101,25 @@ export function Dashboard({ who }: { who: string }) {
         ["Goal", pc(F.registered, D.goal), f(F.registered) + " of " + f(D.goal), F.registered / D.goal],
         ["VIP sold", f(F.vip_paid), pc(F.vip_paid, F.registered) + " of registered"],
         ["VIP revenue", "RM " + f(F.vip_paid * D.vip_price_rm), "at RM " + D.vip_price_rm + " each"],
-        ["Joined live", f(F.attended), F.attended == null ? "fills in on Sunday" : pc(F.attended, F.registered) + " of registered"],
+        ["Joined live", f(F.attended), F.attended == null ? "fills in on 15 Dec" : pc(F.attended, F.registered) + " of registered"],
       ];
       $("kpis").innerHTML = K.map((k) => '<div class="kpi"><small>' + k[0] + "</small><b>" + k[1] + "</b><span>" + k[2] + "</span>" + (k[3] != null ? '<div class="prog"><i style="width:' + Math.min(100, k[3] * 100) + '%"></i></div>' : "") + "</div>").join("");
 
       type Step = [string, string, string?, string?, number?];
       const steps: Step[] = [["g", "Getting them in"], ["Visited the page", "visitors"], ["Registered", "registered", "visitors", "of visitors"], ["Saw the VIP offer", "vip_viewed", "registered", "of registered"], ["Bought VIP", "vip_paid", "vip_viewed", "of those who saw it"],
         ["g", "After they sign up"], ["Joined WhatsApp", "whatsapp_joined", "registered", "of registered"], ["Added to calendar", "calendar_added", "registered", "of registered"], ["Opened an email", "email_opened", "registered", "of registered"], ["Took the quiz", "quiz_done", "registered", "of registered"],
-        ["g", "Sunday (from the Zoom report)"], ["Joined live on Zoom", "attended", "registered", "of registered", 1], ["Stayed to the 1:10pm close", "stayed_to_close", "attended", "of those who joined", 1]];
+        ["g", "Tue 15 Dec (from the Zoom report)"], ["Joined live on Zoom", "attended", "registered", "of registered", 1], ["Stayed for the 9:15pm close", "stayed_to_close", "attended", "of those who joined", 1]];
       const FF = F as unknown as Record<string, number | null>;
       $("fun").innerHTML = steps.map((s) => {
         if (s[0] === "g") return '<p class="grp">' + s[1] + "</p>";
         const v = FF[s[1]], w = v == null ? 0 : (v / (F.visitors || 1)) * 100;
-        const sub = v == null ? "fills in on Sunday" : s[2] ? pc(v, FF[s[2]]) + " " + s[3] : "100%";
+        const sub = v == null ? "fills in on 15 Dec" : s[2] ? pc(v, FF[s[2]]) + " " + s[3] : "100%";
         return '<div class="fr" title="' + s[0] + ": " + f(v) + '"><span class="lb">' + s[0] + '</span><span class="tr"><span class="br' + (s[4] ? " after" : "") + '" style="width:' + (v == null ? 100 : Math.max(0.4, w)) + '%"></span></span><span class="nm"><b>' + f(v) + "</b><span>" + sub + "</span></span></div>";
       }).join("");
 
       line(D);
       const lastDay = D.daily.length ? D.daily[D.daily.length - 1].registered : 0;
-      const left = Math.max(0, (new Date(D.event_day + "T10:00:00+08:00").getTime() - new Date(D.updated_at).getTime()) / 864e5);
+      const left = Math.max(0, (new Date(D.event_day + "T19:00:00+08:00").getTime() - new Date(D.updated_at).getTime()) / 864e5);
       const need = Math.max(0, D.goal - F.registered);
       $("pace").innerHTML = "<div><small>New today</small><b>" + f(lastDay) + "</b></div><div><small>Still to go</small><b>" + f(need) + "</b></div><div><small>Needed per day</small><b>" + f(left > 0 ? Math.ceil(need / Math.max(1, left)) : need) + "</b></div>";
 
@@ -151,7 +151,7 @@ export function Dashboard({ who }: { who: string }) {
     /* total registered vs pace to the goal: one unit (people), one axis */
     function line(D: Stats) {
       const box = $("line"), W = 560, H = 240, P = { l: 44, r: 16, t: 14, b: 28 };
-      const d0 = new Date(D.launch + "T00:00:00+08:00").getTime(), d1 = new Date(D.event_day + "T10:00:00+08:00").getTime();
+      const d0 = new Date(D.launch + "T00:00:00+08:00").getTime(), d1 = new Date(D.event_day + "T19:00:00+08:00").getTime();
       const days: number[] = [];
       for (let t = d0; t <= d1; t += 864e5) days.push(t);
       const x = (ms: number) => P.l + ((ms - d0) / (d1 - d0)) * (W - P.l - P.r), y = (v: number) => H - P.b - (v / D.goal) * (H - P.t - P.b);
@@ -197,13 +197,13 @@ export function Dashboard({ who }: { who: string }) {
         <form method="post" action="/aiday/api/logout"><button className="btn line" type="submit" id="out" style={{ padding: "9px 14px", fontSize: "14px" }}>Sign out</button></form>
       </div></header>
       <div className="in">
-        <div className="head"><div><p className="kicker">Free AI day · Sun 15 Nov · 10am MYT</p><h1 style={{ marginTop: "8px" }}>How&apos;s the launch going?</h1></div><p id="upd">Loading the numbers…</p></div>
+        <div className="head"><div><p className="kicker">Free AI day · Tue 15 Dec · 7pm MYT</p><h1 style={{ marginTop: "8px" }}>How&apos;s the launch going?</h1></div><p id="upd">Loading the numbers…</p></div>
         <div className="grid">
           <div className="kpis" id="kpis"></div>
 
           <div className="two">
             <div className="card"><h2>The funnel</h2><p className="sub">How far people get, from first visit to staying for the close. Each % is against the step it comes from.</p><div className="fun" id="fun"></div><p className="note">Bar length is people, against everyone who visited. Striped bars fill in on Sunday.</p></div>
-            <div className="card"><h2>Registrations vs the 5,000 goal</h2><p className="sub">Total registered so far, against the pace needed to reach 5,000 by Sunday 10am.</p><div className="chart" id="line"><div className="tip" id="tip"></div></div><div className="legend"><span><i></i>Registered (total)</span><span><i className="d"></i>Pace to 5,000</span></div><div className="pace" id="pace"></div></div>
+            <div className="card"><h2>Registrations vs the 5,000 goal</h2><p className="sub">Total registered so far, against the pace needed to reach 5,000 by Tue 15 Dec, 7pm.</p><div className="chart" id="line"><div className="tip" id="tip"></div></div><div className="legend"><span><i></i>Registered (total)</span><span><i className="d"></i>Pace to 5,000</span></div><div className="pace" id="pace"></div></div>
           </div>
 
           <div className="card"><h2>Where people come from</h2><p className="sub">By UTM source. Registration rate = registered ÷ visitors.</p><div className="tw"><table id="src"></table></div></div>

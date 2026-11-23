@@ -10,7 +10,7 @@ function parts(): Parts {
   return { d: Math.floor(d / 864e5), h: Math.floor((d % 864e5) / 36e5), m: Math.floor((d % 36e5) / 6e4), s: Math.floor((d % 6e4) / 1e3) };
 }
 
-/** Four cell countdown to 10:00 MYT, Sun 15 Nov. Shows "--" until mounted (no hydration mismatch). */
+/** Four cell countdown to 7pm MYT, Tue 15 Dec. Shows "--" until mounted (no hydration mismatch). */
 export function Countdown() {
   const [p, setP] = useState<Parts>(null);
   useEffect(() => {

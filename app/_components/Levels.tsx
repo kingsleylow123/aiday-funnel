@@ -11,11 +11,11 @@ const LEVELS: [number, string, string][] = [
 ];
 
 const ANSWER: Record<number, [string, string]> = {
-  1: ["Level 1 → 2", "Hour 1 with Kingsley starts from zero and gets your first AI helper working."],
-  2: ["Level 2 → 3", "Hour 1 with Kingsley turns your questions into an AI helper that does the work."],
-  3: ["Level 3 → 4", "Hour 2 with Alaric makes AI sell for you: offer, ad and follow ups."],
-  4: ["Level 4 → 5", "Hour 3 with Rafay shows the last step: the whole business on your phone."],
-  5: ["Level 5", "Come for hour 3 and the live Q&A. Compare notes with all three of us."],
+  1: ["Level 1 → 2", "Kingsley's session at 7pm starts from zero and gets your first AI helper working."],
+  2: ["Level 2 → 3", "Kingsley's session at 7pm turns your questions into an AI helper that does the work."],
+  3: ["Level 3 → 4", "Alaric's session at 7:45pm makes AI sell for you: offer, ad and follow ups."],
+  4: ["Level 4 → 5", "Rafay's session at 8:30pm shows the last step: the whole business on your phone."],
+  5: ["Level 5", "Come for Rafay's session at 8:30pm and the live Q&A at 9:15pm. Compare notes with all three of us."],
 };
 
 export function Levels() {

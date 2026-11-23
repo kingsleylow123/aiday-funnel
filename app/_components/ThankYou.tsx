@@ -139,11 +139,11 @@ export function CopyLink({ url }: { url: string }) {
 /* One quiz: 3 level questions (scored), then 3 business questions; the level is shown at the end. */
 const NAMES = ["", "Watcher", "Asker", "Amplifier", "Builder", "Power CEO"];
 const HOUR: Record<number, string> = {
-  1: "You start at zero, and that is fine. Hour 1 with Kingsley gets your first AI helper working by 11:10.",
-  2: "You ask AI questions, then do the work yourself. Hour 1 with Kingsley turns that into an AI helper that does the work.",
-  3: "AI already makes you faster. Hour 2 with Alaric makes it sell for you: offer, ad and follow ups.",
-  4: "You build with AI. Hour 3 with Rafay shows the last step: the whole business running from your phone.",
-  5: "You run on AI already. Come for hour 3 and the live Q&A, and compare notes with all three of us.",
+  1: "You start at zero, and that is fine. Kingsley's session at 7pm gets your first AI helper working by 7:45.",
+  2: "You ask AI questions, then do the work yourself. Kingsley's session at 7pm turns that into an AI helper that does the work.",
+  3: "AI already makes you faster. Alaric's session at 7:45pm makes it sell for you: offer, ad and follow ups.",
+  4: "You build with AI. Rafay's session at 8:30pm shows the last step: the whole business running from your phone.",
+  5: "You run on AI already. Come for Rafay's session at 8:30pm and the live Q&A at 9:15pm, and compare notes with all three of us.",
 };
 type Q = { k: "use" | "leads" | "week" | "stage" | "revenue" | "help"; lv?: boolean; q: string; o: string[] };
 const QUESTIONS: Q[] = [
@@ -211,7 +211,7 @@ export function Quiz({ token }: { token: string }) {
           ))}
         </div>
         <p id="qzT" style={{ color: "var(--muted)", fontSize: "17px" }}>{level ? HOUR[level] : ""}</p>
-        <p style={{ fontSize: "15px", color: "var(--muted)" }}>Thank you. Your answers help us choose what we build live on Sunday.</p>
+        <p style={{ fontSize: "15px", color: "var(--muted)" }}>Thank you. Your answers help us choose what we build live on Tuesday night.</p>
         <div className="nav">
           <span />
           <button type="button" className="link" id="again" onClick={() => { setI(0); setScores({}); setLevel(0); }}>Take it again</button>
